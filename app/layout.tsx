@@ -14,9 +14,9 @@ const _playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Cha de Fraldas da Luna',
+  title: 'Chá de Fraldas da Luna',
   description:
-    'Confirme sua presenca no Cha de Fraldas da Luna. Venha celebrar a chegada da nossa princesinha!',
+    'Confirme sua presença no Chá de Fraldas da Luna. Venha celebrar a chegada da nossa princesinha!',
 }
 
 export const viewport: Viewport = {
