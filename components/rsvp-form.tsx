@@ -338,6 +338,22 @@ export function RSVPForm() {
                                       type="tel"
                                       placeholder="(65) 99999-9999"
                                       {...field}
+                                      onChange={(event) => {
+                                        const digits = event.target.value.replace(/\D/g, "").slice(0, 11)
+
+                                        let formatted = ""
+                                        if (digits.length > 0) {
+                                          formatted = `(${digits.slice(0, 2)}`
+                                        }
+                                        if (digits.length >= 3) {
+                                          formatted += `) ${digits.slice(2, 7)}`
+                                        }
+                                        if (digits.length >= 8) {
+                                          formatted += `-${digits.slice(7, 11)}`
+                                        }
+
+                                        field.onChange(formatted)
+                                      }}
                                       className="bg-background/50 border-primary/20 h-12 px-4 rounded-lg"
                                     />
                                   </FormControl>

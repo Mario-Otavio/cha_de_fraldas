@@ -77,7 +77,7 @@ export function Hero() {
           transition={{ delay: 0.5 }}
           className="text-balance text-4xl font-bold text-foreground md:text-6xl"
         >
-          Chá de Fraldas
+          Chá de Bebê
           <span className="block text-primary">da Luna</span>
         </motion.h1>
 
@@ -87,7 +87,7 @@ export function Hero() {
           transition={{ delay: 0.7 }}
           className="mx-auto mt-6 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
         >
-          Venha celebrar a chegada da nossa princesinha!
+          Venha celebrar a chegada da nossa Luninha!
           <br />
           Será um dia cheio de amor, carinho e muita alegria.
         </motion.p>

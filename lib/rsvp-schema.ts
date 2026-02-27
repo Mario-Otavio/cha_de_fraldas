@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export const rsvpSchema = z
   .object({
@@ -10,28 +10,30 @@ export const rsvpSchema = z
     acompanhantesNomes: z.array(
       z.object({
         nome: z.string().min(2, "Informe o nome do acompanhante."),
-      })
+      }),
     ),
-    whatsapp: z.string().min(1, "Por favor, informe seu telefone/WhatsApp.").refine(
-      (value) => {
+    whatsapp: z
+      .string()
+      .min(1, "Por favor, informe seu telefone/WhatsApp.")
+      .regex(/^\(\d{2}\)\s\d{5}-\d{4}$/, "Use o formato (65) 99999-9999.")
+      .refine((value) => {
         const numbers = value.replace(/\D/g, "");
-        return numbers.length >= 10 && numbers.length <= 11;
-      },
-      "Informe um telefone válido com DDD (10 ou 11 dígitos)."
-    ),
+        return numbers.length === 11;
+      }, "Informe um número de WhatsApp válido com DDD (11 dígitos)."),
     mensagem: z.string().optional(),
   })
   .refine(
     (data) => {
       if (data.presenca === "nao") {
-        return data.acompanhantes === 0
+        return data.acompanhantes === 0;
       }
-      return true
+      return true;
     },
     {
-      message: "Se você não irá comparecer, o número de acompanhantes deve ser 0.",
+      message:
+        "Se você não irá comparecer, o número de acompanhantes deve ser 0.",
       path: ["acompanhantes"],
-    }
-  )
+    },
+  );
 
-export type RSVPFormData = z.infer<typeof rsvpSchema>
+export type RSVPFormData = z.infer<typeof rsvpSchema>;

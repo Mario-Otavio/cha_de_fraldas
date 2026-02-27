@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin, ExternalLink, Car, Navigation } from "lucide-react"
+import { MapPin, ExternalLink, Navigation, PartyPopper } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -79,14 +79,14 @@ export function LocationSection() {
                 {/* Detalhes do Estacionamento */}
                 <div className="flex items-start gap-4">
                   <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 shadow-inner">
-                    <Car className="size-6 text-primary" />
+                    <PartyPopper className="size-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
-                      Estacionamento
+                      Local do evento
                     </h3>
                     <p className="text-xs md:text-sm font-medium leading-relaxed text-muted-foreground">
-                      Estacionamento gratuito disponível no local.
+                      Salão de festas, proximo a guarita do condomínio.
                     </p>
                   </div>
                 </div>
