@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     }
 
     // URL de implantação do seu Web App no Apps Script
-    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxy6R4X87kANsVyXkRcm48B13_f4i_NBL6-a_CxDzb12wpV0aLmNceO8Q7hfs48fA8m/exec"
+    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyc5BNI9Znty4fSjJz20Tk0Rzhq4kJj8kcLuPrWhilI_qxg7qI9heokO8gdzTnxxm1AWw/exec"
     
     if (GOOGLE_SCRIPT_URL) {
       try {
