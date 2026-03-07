@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Send, Loader2, Heart, User, Users, MessageSquare, Phone, Trash2, CheckCircle2, XCircle, FileText } from "lucide-react"
 import { toast } from "sonner"
 
+import { cn } from "@/lib/utils"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -52,7 +54,7 @@ export function RSVPForm() {
 
   const lidarComSubmissao = (e: SyntheticEvent) => {
     const dataDeHoje = new Date()
-    const dataDeEncerramento = new Date(2026, 2, 6)
+    const dataDeEncerramento = new Date(2026, 2, 18)
 
     if (dataDeHoje >= dataDeEncerramento) {
       e.preventDefault()
@@ -105,7 +107,7 @@ export function RSVPForm() {
 
       if (response.ok) {
         toast.success("Presença confirmada com sucesso!", {
-          description: "Obrigada por confirmar. Nos vemos lá!",
+          description: "Nos vemos lá!",
         })
         setEnviadoComSucesso(true)
       } else {
@@ -148,16 +150,18 @@ export function RSVPForm() {
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           <Card className="border-0 shadow-2xl bg-background/80 backdrop-blur-xl ring-1 ring-primary/10 gap-0">
-            <CardHeader className="flex flex-row items-center gap-3 md:gap-5 pb-5 border-b border-primary/10 space-y-0">
-              <div className="bg-primary p-3 rounded-2xl flex items-center justify-center shrink-0">
-                <FileText className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left flex-1">
-                <CardTitle className="text-lg md:text-2xl">Formulário de Confirmação</CardTitle>
-                <CardDescription className="text-xs md:text-sm">Preencha os dados abaixo com carinho.</CardDescription>
-              </div>
-            </CardHeader>
-            <CardContent className="pt-5 px-6">
+            {!enviadoComSucesso && (
+              <CardHeader className="flex flex-row items-center gap-3 md:gap-5 pb-5 border-b border-primary/10 space-y-0">
+                <div className="bg-primary p-3 rounded-2xl flex items-center justify-center shrink-0">
+                  <FileText className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-left flex-1">
+                  <CardTitle className="text-lg md:text-2xl">Formulário de Confirmação</CardTitle>
+                  <CardDescription className="text-xs md:text-sm">Preencha os dados abaixo com carinho.</CardDescription>
+                </div>
+              </CardHeader>
+            )}
+            <CardContent className={cn("px-6", !enviadoComSucesso ? "pt-5" : "pt-0")}>
               <AnimatePresence mode="wait">
                 {enviadoComSucesso ? (
                   <RSVPSuccessMessage onReset={() => {

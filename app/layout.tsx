@@ -39,9 +39,9 @@ export default function RootLayout({
           position="top-center"
           toastOptions={{
             classNames: {
-              toast: "group flex gap-3 w-fit bg-background/80 backdrop-blur-xl border border-primary/20 shadow-xl rounded-2xl p-4 ring-1 ring-primary/10 items-start top-4",
-              title: "pl-4 text-foreground text-lg font-bold",
-              description: "pl-4 text-muted-foreground text-sm font-medium",
+              toast: "group flex !w-fit bg-background/80 backdrop-blur-xl border border-primary/20 shadow-xl rounded-2xl !p-4 ring-1 ring-primary/10 items-center",
+              title: "pl-6 text-foreground text-lg font-semibold whitespace-nowrap !leading-tight",
+              description: "pl-6 text-muted-foreground text-sm whitespace-nowrap !mt-[-4px]",
               icon: "text-green-400 flex-shrink-0 mt-0.5 [&>svg]:size-10",
             },
           }}
