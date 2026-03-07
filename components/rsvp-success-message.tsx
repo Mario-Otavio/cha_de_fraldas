@@ -29,7 +29,7 @@ export function RSVPSuccessMessage({ onReset }: RSVPSuccessMessageProps) {
             </p>
             <Button
                 variant="outline"
-                className="mt-3 rounded-full px-6 cursor-pointer"
+                className="mt-3 rounded-full px-6 cursor-pointer hover:bg-primary hover:text-white"
                 onClick={onReset}
             >
                 Enviar nova resposta

@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Heart, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ModalExpirado } from "@/components/modal-expirado"
 
 function FloatingHeart({ delay, x, size }: { delay: number; x: number; size: number }) {
   return (
@@ -27,6 +29,18 @@ function FloatingHeart({ delay, x, size }: { delay: number; x: number; size: num
 }
 
 export function Hero() {
+  const [modalExpiradoAberto, setModalExpiradoAberto] = useState(false)
+
+  const handleConfirmarPresenca = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const dataDeHoje = new Date()
+    const dataDeEncerramento = new Date(2026, 2, 6)
+
+    if (dataDeHoje >= dataDeEncerramento) {
+      e.preventDefault()
+      setModalExpiradoAberto(true)
+    }
+  }
+
   return (
     <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-4 py-20">
       {/* Gradiente de fundo suave */}
@@ -109,7 +123,7 @@ export function Hero() {
         >
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
             <Button asChild size="lg" className="cursor-pointer w-[214px] rounded-full px-8 text-base shadow-md">
-              <a href="#confirmar">Confirmar presença</a>
+              <a href="#confirmar" onClick={handleConfirmarPresenca}>Confirmar presença</a>
             </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
@@ -133,6 +147,8 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      <ModalExpirado aberto={modalExpiradoAberto} setAberto={setModalExpiradoAberto} />
     </section>
   )
 }

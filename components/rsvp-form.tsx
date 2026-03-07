@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useState, useEffect, type SyntheticEvent } from "react"
 import { useForm, useFieldArray } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { motion, AnimatePresence } from "framer-motion"
@@ -23,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { ModalExpirado } from "@/components/modal-expirado"
 
 import { rsvpSchema, type RSVPFormData } from "@/lib/rsvp-schema"
 
@@ -39,12 +40,27 @@ export function RSVPForm() {
     },
   })
 
-  const { control, handleSubmit, watch, setValue, reset, formState: { isSubmitting, isSubmitSuccessful } } = form
+  const [modalExpiradoAberto, setModalExpiradoAberto] = useState(false)
+  const [enviadoComSucesso, setEnviadoComSucesso] = useState(false)
+
+  const { control, handleSubmit, watch, setValue, reset, formState: { isSubmitting } } = form
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: "acompanhantesNomes",
   })
+
+  const lidarComSubmissao = (e: SyntheticEvent) => {
+    const dataDeHoje = new Date()
+    const dataDeEncerramento = new Date(2026, 2, 6)
+
+    if (dataDeHoje >= dataDeEncerramento) {
+      e.preventDefault()
+      setModalExpiradoAberto(true)
+    } else {
+      form.handleSubmit(onSubmit)(e)
+    }
+  }
 
   const presenca = watch("presenca")
   const acompanhantes = watch("acompanhantes")
@@ -91,7 +107,7 @@ export function RSVPForm() {
         toast.success("Presença confirmada com sucesso!", {
           description: "Obrigada por confirmar. Nos vemos lá!",
         })
-        // O formulário se mantém preenchido e "isSubmitSuccessful" entra em ação para exibir a tela de sucesso
+        setEnviadoComSucesso(true)
       } else {
         const responseData = await response.json().catch(() => ({}))
         toast.error(responseData.message || "Algo deu errado. Tente novamente.")
@@ -143,8 +159,11 @@ export function RSVPForm() {
             </CardHeader>
             <CardContent className="pt-5 px-6">
               <AnimatePresence mode="wait">
-                {isSubmitSuccessful ? (
-                  <RSVPSuccessMessage onReset={() => reset()} />
+                {enviadoComSucesso ? (
+                  <RSVPSuccessMessage onReset={() => {
+                    reset()
+                    setEnviadoComSucesso(false)
+                  }} />
                 ) : (
                   <motion.div
                     key="form"
@@ -153,7 +172,7 @@ export function RSVPForm() {
                     exit={{ opacity: 0 }}
                   >
                     <Form {...form}>
-                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                      <form onSubmit={lidarComSubmissao} className="space-y-8">
                         <fieldset disabled={isSubmitting} className="space-y-8 disabled:opacity-80 transition-opacity">
 
                           {/* Nome */}
@@ -418,6 +437,8 @@ export function RSVPForm() {
           </Card>
         </motion.div>
       </div>
+
+      <ModalExpirado aberto={modalExpiradoAberto} setAberto={setModalExpiradoAberto} />
     </section>
   )
 }
