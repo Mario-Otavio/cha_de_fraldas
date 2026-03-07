@@ -21,7 +21,7 @@ export function ModalExpirado({ aberto, setAberto }: ModalExpiradoProps) {
                 <DialogHeader>
                     <DialogTitle className="text-2xl font-bold text-primary">Período encerrado</DialogTitle>
                     <DialogDescription className="text-base text-muted-foreground pt-2 text-justify">
-                        O período de confirmação pelo site já passou. Se você ainda deseja confirmar sua presença, por favor entre em contato diretamente com os pais por WhatsApp.
+                        O período de confirmação pelo site já encerrou. Por favor entre em contato diretamente com os pais por WhatsApp.
                     </DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col gap-4 pt-6">
@@ -30,7 +30,7 @@ export function ModalExpirado({ aberto, setAberto }: ModalExpiradoProps) {
                         className="w-full h-12 bg-[#25D366] hover:bg-[#20b858] text-white font-semibold rounded-xl"
                     >
                         <a
-                            href="https://wa.me/5565992240822?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20Ch%C3%A1%20de%20Beb%C3%AA%20da%20Luna.%20Vi%20no%20site%20que%20o%20prazo%20encerrou.%20Ainda%20%C3%A9%20poss%C3%ADvel%3F"
+                            href="https://wa.me/5565992240822?text=Ol%C3%A1!%20Vi%20no%20site%20que%20o%20prazo%20de%20confirma%C3%A7%C3%A3o%20do%20Ch%C3%A1%20de%20Beb%C3%AA%20da%20Luna%20encerrou.%20Ainda%20%C3%A9%20poss%C3%ADvel%3F"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2"
@@ -45,7 +45,7 @@ export function ModalExpirado({ aberto, setAberto }: ModalExpiradoProps) {
                         className="w-full h-12 bg-[#25D366] hover:bg-[#20b858] text-white font-semibold rounded-xl"
                     >
                         <a
-                            href="https://wa.me/5565998153363?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20Ch%C3%A1%20de%20Beb%C3%AA%20da%20Luna.%20Vi%20no%20site%20que%20o%20prazo%20encerrou.%20Ainda%20%C3%A9%20poss%C3%ADvel%3F"
+                            href="https://wa.me/5565998153363?text=Ol%C3%A1!%20Vi%20no%20site%20que%20o%20prazo%20de%20confirma%C3%A7%C3%A3o%20do%20Ch%C3%A1%20de%20Beb%C3%AA%20da%20Luna%20encerrou.%20Ainda%20%C3%A9%20poss%C3%ADvel%3F"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2"

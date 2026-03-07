@@ -8,13 +8,13 @@ const details = [
   {
     icon: Calendar,
     title: "Data",
-    description: "28 de Março de 2026",
-    subtitle: "Sábado",
+    description: "05 de Abril de 2026",
+    subtitle: "Domingo",
   },
   {
     icon: Clock,
     title: "Horário",
-    description: "A partir das 11h",
+    description: "A partir das 17h",
     subtitle: "Pontualidade",
   },
   {

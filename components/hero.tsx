@@ -112,7 +112,7 @@ export function Hero() {
           transition={{ delay: 0.85 }}
           className="mt-3 text-sm font-semibold text-foreground"
         >
-          {"28 de Março de 2026 - 11h"}
+          {"05 de Abril de 2026 - 17h"}
         </motion.p>
 
         <motion.div
