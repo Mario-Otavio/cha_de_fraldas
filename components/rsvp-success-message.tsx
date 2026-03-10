@@ -25,7 +25,7 @@ export function RSVPSuccessMessage({ onReset }: RSVPSuccessMessageProps) {
             </motion.div>
             <h3 className="text-2xl md:text-3xl mb-4 font-bold text-foreground">Confirmação Enviada!</h3>
             <p className="text-muted-foreground mb-4 text-base md:text-lg max-w-sm font-medium">
-                Muito obrigado por responder. Todas as informações foram registradas com sucesso!
+                Muito obrigado pela sua confirmação. <strong className="text-foreground italic">Sugestão de presente: Fraldas M ou G e um mimo de sua escolha!</strong>
             </p>
             <Button
                 variant="outline"
